@@ -3,7 +3,7 @@ import pandas as pd
 import subprocess
 import matplotlib.pyplot as plt
 
-from clean_technologies import split_technologies, transform_technologies
+from clean_data.clean_technologies import split_technologies, transform_technologies
 
 subprocess.run(['scrapy', 'crawl', 'djinni_spider', '-O', 'djinni.csv'])
 
