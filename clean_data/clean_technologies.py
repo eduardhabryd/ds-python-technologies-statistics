@@ -65,7 +65,12 @@ def transform_technologies(x: str) -> str:
     if x.startswith("full stack") or x.startswith("full-stack"):
         return "fullstack"
 
-    if x == "django rest" or x == "drf" or x == "django-rest-framework" or x == "django rest framework":
+    if (
+            x == "django rest"
+            or x == "drf"
+            or x == "django-rest-framework"
+            or x == "django rest framework"
+    ):
         return "drf"
 
     if x == "docker compose":
