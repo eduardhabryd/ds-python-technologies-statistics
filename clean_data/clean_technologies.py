@@ -1,3 +1,5 @@
+import pandas as pd
+
 def split_technologies(x: str) -> list | str:
     x = x.lower()
     if "python3" in x:
@@ -104,3 +106,15 @@ def transform_technologies(x: str) -> str:
         return "postgres"
 
     return x
+
+
+def exclude_technologies(x: str) -> str:
+
+    df = pd.read_csv("clean_data/exclude.csv")
+
+    exclude_technologies_list = list(df["technologies"])
+
+    if x in exclude_technologies_list:
+        return ""
+    else:
+        return x
