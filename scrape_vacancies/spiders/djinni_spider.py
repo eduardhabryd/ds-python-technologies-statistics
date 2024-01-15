@@ -1,6 +1,7 @@
 import scrapy
 from scrapy.http import Response
 from urllib.parse import urljoin
+from typing import Generator, Optional, Dict
 
 
 class DjinniSpiderSpider(scrapy.Spider):
@@ -8,7 +9,9 @@ class DjinniSpiderSpider(scrapy.Spider):
     allowed_domains = ["djinni.co"]
     start_urls = ["https://djinni.co/jobs/?primary_keyword=Python"]
 
-    def parse(self, response: Response, **kwargs) -> None:
+    def parse(
+            self, response: Response, **kwargs
+    ) -> Generator[scrapy.Request, None, None]:
         for job_item in response.css(".list-jobs__item.job-list__item"):
             yield response.follow(
                 urljoin(
@@ -35,7 +38,9 @@ class DjinniSpiderSpider(scrapy.Spider):
             )
             current_page += 1
 
-    def _parse_single_job(self, response: Response, **kwargs) -> None:
+    def _parse_single_job(
+            self, response: Response, **kwargs
+    ) ->  Optional[Dict[str, Optional[str]]]:
         technologies = response.css(
             '.job-additional-info--item-text span[class=""]::text'
         ).getall()
