@@ -16,7 +16,7 @@ This project combines the power of web scraping and data analysis to provide ins
 1. **Execute the following commands:**
    ```bash
    git clone https://github.com/eduardhabryd/ds-python-technologies-statistics.git
-   ds-python-technologies-statistics
+   cd ds-python-technologies-statistics
    python -m venv venv
    source venv/bin/activate # or venv\Scripts\activate in Windows
    pip install -r requirements.txt
